@@ -157,3 +157,53 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+// Graphic Designing filter redirect - when clicking eye icon on the first GD project in "All" view
+const gdProjects = document.querySelectorAll('[data-category="graphic designing"]');
+const firstGdProject = gdProjects[0];
+
+if (firstGdProject) {
+  const eyeIcon = firstGdProject.querySelector('[name="eye-outline"]');
+  if (eyeIcon) {
+    eyeIcon.parentElement.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      // Find and click the "Graphic Designing" filter button
+      for (let i = 0; i < filterBtn.length; i++) {
+        if (filterBtn[i].innerText.toLowerCase() === "graphic designing") {
+          filterBtn[i].click();
+          break;
+        }
+      }
+    });
+  }
+}
+
+// Web Development filter redirect - when clicking eye icon on the first new web project in "All" view
+const webProjects = document.querySelectorAll('[data-category="web development"]');
+// Find the first new web project (E-Commerce Website)
+const firstNewWebProject = null;
+for (let i = 0; i < webProjects.length; i++) {
+  const title = webProjects[i].querySelector('.project-title');
+  if (title && title.innerText === 'E-Commerce Website') {
+    firstNewWebProject = webProjects[i];
+    break;
+  }
+}
+
+if (firstNewWebProject) {
+  const eyeIcon = firstNewWebProject.querySelector('[name="eye-outline"]');
+  if (eyeIcon) {
+    eyeIcon.parentElement.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      // Find and click the "Website development" filter button
+      for (let i = 0; i < filterBtn.length; i++) {
+        if (filterBtn[i].innerText.toLowerCase() === "website development") {
+          filterBtn[i].click();
+          break;
+        }
+      }
+    });
+  }
+}
